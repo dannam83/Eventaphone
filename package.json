@@ -34,5 +34,6 @@
   "bugs": {
     "url": "https://github.com/dannam83/Eventaphone/issues"
   },
-  "homepage": "https://github.com/dannam83/Eventaphone#readme"
+  "homepage": "https://github.com/dannam83/Eventaphone#readme",
+  "devDependencies": {}
 }

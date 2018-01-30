@@ -4,9 +4,9 @@
 #
 #  id         :integer          not null, primary key
 #  name       :text             not null
-#  date       :date             not null
-#  time       :time             not null
-#  location   :text             not null
+#  date       :string           not null
+#  time       :string           not null
+#  address    :text             not null
 #  summary    :text             not null
 #  details    :text             not null
 #  organizer  :text             not null
