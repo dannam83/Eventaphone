@@ -1,4 +1,6 @@
-class EventsController < ApplicationController
+class Api::EventsController < ApplicationController
+
+  @@queued_events = []
 
   def show
     @event = Event.find(params[:id])
@@ -10,11 +12,12 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-
     if @event.save
-      render :show
+      Event.queue.push(@event)
+      redirect_to root_url
     else
-      render json: @event, status: :unprocessable_entity
+      alert("bad info")
+      # render json: @event, status: :unprocessable_entity
     end
   end
 
@@ -25,5 +28,11 @@ class EventsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+  def event_params
+    params.require(:event).permit(
+      :name, :date, :time, :address, :details, :summary, :organizer)
   end
 end
