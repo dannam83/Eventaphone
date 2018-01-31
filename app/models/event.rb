@@ -13,24 +13,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  syndicated :boolean
-#
-
-# require 'mechanize'
 
 class Event < ApplicationRecord
   validates :name, :date, :time, :address, presence: true
   validates :summary, :details, :organizer, presence: true
-
-  def self.test
-    event = Event.first
-    if event.syndicated
-      event.syndicated = false
-      event.save
-    else
-      event.syndicated = true
-      event.save
-    end
-  end
 
   def self.syndicate
     queued_events = Event.where(syndicated: nil)
@@ -62,6 +48,8 @@ class Event < ApplicationRecord
     agent.page.forms[0]["details"] = self.details
     agent.page.forms[0]["description"] = self.details
     agent.page.forms[0]["organizer"] = self.organizer
+
+    #form fields used to confirm method works on localhost:3000
     agent.page.forms[0]["event[name]"] = self.name
     agent.page.forms[0]["event[time]"] = self.time
     agent.page.forms[0]["event[date]"] = self.date
