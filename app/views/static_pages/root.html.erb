@@ -1,64 +1,62 @@
 <div class="master">
+  <h1>Eventaphone Admin</h1>
 
-<h1>Eventaphone Admin</h1>
+  <form action="/api/events" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <div>
+      <label>
+        <div>Event Name</div>
+        <input type="text" name="event[name]" value="" class="formInput">
+      </label>
+      <label>
+        <div>Date</div>
+        <input type="text" name="event[date]" value="" class="formInput">
+      </label>
+      <label>
+        <div>Time</div>
+        <input type="text" name="event[time]" value="" class="formInput">
+      </label>
+    </div>
+    <div>
+      <label>
+        <div>Address</div>
+        <input type="text" name="event[address]" value="" class="formInput">
+      </label>
+      <label>
+        <div>Organizer</div>
+        <input type="text" name="event[organizer]" value="" class="formInput">
+      </label>
+    </div>
+    <div>
+      <label>
+        <div>Summary</div>
+        <textarea name="event[summary]" rows="3" cols="80" class="formInput"></textarea>
+      </label>
+    </div>
+    <div>
+      <label>
+        <div>Details</div>
+        <textarea name="event[details]" rows="10" cols="80" class="formInput"></textarea>
+      </label>
+    </div>
+    <input type="submit" name="" value="Submit Event">
+  </form>
 
-<form action="/api/events" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <div>
-    <label>
-      <div>Event Name</div>
-      <input type="text" name="event[name]" value="" class="formInput">
-    </label>
-    <label>
-      <div>Date</div>
-      <input type="text" name="event[date]" value="" class="formInput">
-    </label>
-    <label>
-      <div>Time</div>
-      <input type="text" name="event[time]" value="" class="formInput">
-    </label>
-  </div>
-  <div>
-    <label>
-      <div>Address</div>
-      <input type="text" name="event[address]" value="" class="formInput">
-    </label>
-    <label>
-      <div>Organizer</div>
-      <input type="text" name="event[organizer]" value="" class="formInput">
-    </label>
-  </div>
-  <div>
-    <label>
-      <div>Summary</div>
-      <textarea name="event[summary]" rows="3" cols="80" class="formInput"></textarea>
-    </label>
-  </div>
-  <div>
-    <label>
-      <div>Details</div>
-      <textarea name="event[details]" rows="10" cols="80" class="formInput"></textarea>
-    </label>
-  </div>
-  <input type="submit" name="" value="Submit Event">
-</form>
+  <h2 class="queueTitle">Queued Events</h2>
 
-<h2 class="queueTitle">Queued Events</h2>
+  <% @queued_events = Event.where(syndicated: nil) %>
 
-<% @queued_events = Event.where(syndicated: nil) %>
-
-<ul class="queuedEvents">
-  <% if @queued_events.length == 0 %>
-    <li class="emptyList">
-      No events to syndicate
-    </li>
-  <% else %>
-    <% @queued_events.each do |event| %>
-      <li>
-        <%= event.name %>: <%= event.summary %>
+  <ul class="queuedEvents">
+    <% if @queued_events.length == 0 %>
+      <li class="emptyList">
+        No events to syndicate
       </li>
+    <% else %>
+      <% @queued_events.each do |event| %>
+        <li>
+          <%= event.name %>: <%= event.summary %>
+        </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-
+  </ul>
 </div>
