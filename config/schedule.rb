@@ -1,3 +1,3 @@
-every 1.hour do
+every 1.minute do
   runner "Event.syndicate", :environment => "development"
 end

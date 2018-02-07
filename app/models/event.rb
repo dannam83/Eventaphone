@@ -26,11 +26,16 @@ class Event < ApplicationRecord
   end
 
   def syndicate
-    self.fill_form("eventbrite.com")
-    self.fill_form("eventful.com")
-    self.fill_form("localhost:3000")
-    self.syndicated = true
-    self.save
+    if self.summary == "SYNDICATED"
+      self.delete
+    else
+      # add websites below as needed
+      # self.fill_form("eventbrite.com")
+      # self.fill_form("eventful.com")
+      self.fill_form("localhost:3000")
+      self.syndicated = true
+      self.save
+    end
   end
 
   def fill_form(url)
