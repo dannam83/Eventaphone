@@ -22,8 +22,8 @@ Eventaphone is set to check every minute to see if there are any new events in t
 
 We don't want the list of syndicated events to grow infinitely long, so after a minute of indicating that the event was syndicated, it will remove the event from the list. Try refreshing the page a minute after your event is syndicated. You'll see that your event is no longer listed under Queued Events.
 
-# Technical
-## Wheneverize Gem
+## Technical
+### Wheneverize Gem
 Wheneverize is a gem that provides the functionality of creating automated periodic events. You can set something to happen after so many minutes, hours, or days, and you can also set it to run on certain days and/or at certain times. For the sake of demonstration, I have set the syndicating process to run every minute. 
 
 Wheneverize creates a schedule.rb file in the config folder. Schedule.rb is where you can put commands for wheneverize. 
@@ -37,7 +37,7 @@ Once you have your scheduled events entered, to update the list of automated pro
 $ wheneverize --update-crontab
 ```
 Now we've got automated syndication!
-## Mechanize Gem
+### Mechanize Gem
 Mechanize allows you to create methods that interact with webpages. You can navigate to a page, fill in inputs, submit forms, and click over to other links as well. For our purposes, we simply need to navigate to a page, find the input fields, fill in those input fields with the appropriate information, and click submit.
 ```ruby
 def fill_form(url)
@@ -63,7 +63,7 @@ def fill_form(url)
   page.forms[0].submit 
 end
 ```
-## Functionality
+### Functionality
 The app currently does not actually enter information on any other websites. To make it fully work, the server must first be logged into the websites where information is being entered. If the server is logged in, we only need to specify the exact url and identify the fields that need information in the fill_form(url) method above.
 
 Thanks for checking out Eventaphone!
