@@ -30,7 +30,7 @@ Ruby On rails has the ability to combine HTML with Ruby methods. By using the fi
 
   <ul class="queuedEvents">
     <% if @queued_events.length == 0 %>
-      <li class="emptyList">
+      <li>
         No events to syndicate
       </li>
     <% else %>
