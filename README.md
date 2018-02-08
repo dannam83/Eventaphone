@@ -15,13 +15,10 @@ $ rails s
 
 ## Usage
 Start by entering information for your event. You'll need to fill out the whole form for it to submit properly. 
-![alt text](https://user-images.githubusercontent.com/30483700/35950512-ee65d2a8-0c44-11e8-8e7d-936bca1e0b53.png)
 
 Upon submission you'll see your event show up under Queued Events. 
-![alt text](https://user-images.githubusercontent.com/30483700/35950596-547e35f8-0c45-11e8-937a-4b9b31adbe0f.png)
 
 Eventaphone is set to check every minute to see if there are any new events in the queue, and if there are, it will syndicate those events to the other websites and mark that your event has been syndicated. If you refresh the page after a minute, it will show that your event was syndicated.
-![alt text](https://user-images.githubusercontent.com/30483700/35950635-8271752e-0c45-11e8-874a-c1bf6335947a.png)
 
 We don't want the list of syndicated events to grow infinitely long, so after a minute of indicating that the event was syndicated, it will remove the event from the list. Try refreshing the page a minute after your event is syndicated. You'll see that your event is no longer listed under Queued Events.
 
