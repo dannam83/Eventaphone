@@ -25,7 +25,7 @@ We don't want the list of syndicated events to grow infinitely long, so after a 
 ## Technical
 ### HTML + Ruby
 Ruby On rails has the ability to combine HTML with Ruby methods. By using the filename extension .html.erb we get these capabilities. Furthermore, with ActiveRecord at our disposal, we can also directly interact with our database at the same time as is done below.
-```ruby
+```html
 <% @queued_events = Event.where(syndicated: nil) %>
 
   <ul class="queuedEvents">
