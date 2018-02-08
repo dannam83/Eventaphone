@@ -13,7 +13,6 @@ class Api::EventsController < ApplicationController
     if @event.save
       redirect_to root_url
     else
-      debugger
       flash.now[:alert] = 'Please fill out entire form.'
     end
   end
