@@ -23,6 +23,25 @@ Eventaphone is set to check every minute to see if there are any new events in t
 We don't want the list of syndicated events to grow infinitely long, so after a minute of indicating that the event was syndicated, it will remove the event from the list. Try refreshing the page a minute after your event is syndicated. You'll see that your event is no longer listed under Queued Events.
 
 ## Technical
+### HTML + Ruby
+Ruby On rails has the ability to combine HTML with Ruby methods. By using the filename extension .html.erb we get these capabilities. Furthermore, with ActiveRecord at our disposal, we can also directly interact with our database at the same time as is done below.
+```ruby
+<% @queued_events = Event.where(syndicated: nil) %>
+
+  <ul class="queuedEvents">
+    <% if @queued_events.length == 0 %>
+      <li class="emptyList">
+        No events to syndicate
+      </li>
+    <% else %>
+      <% @queued_events.each do |event| %>
+        <li>
+          <%= event.name %>: <%= event.summary %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+```
 ### Wheneverize Gem
 Wheneverize is a gem that provides the functionality of creating automated periodic events. You can set something to happen after so many minutes, hours, or days, and you can also set it to run on certain days and/or at certain times. For the sake of demonstration, I have set the syndicating process to run every minute. 
 
