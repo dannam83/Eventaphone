@@ -30,8 +30,8 @@ class Event < ApplicationRecord
       self.delete
     else
       # add websites below as needed
-      # self.fill_form("eventbrite.com")
-      # self.fill_form("eventful.com")
+      self.fill_form("eventbrite.com")
+      self.fill_form("eventful.com")
       self.fill_form("localhost:3000")
       self.syndicated = true
       self.save
@@ -41,18 +41,15 @@ class Event < ApplicationRecord
   def fill_form(url)
     agent = Mechanize.new
     page = agent.get("http://" + url)
+
+    # fields for other websites
     agent.page.forms[0]["name"] = self.name
-    agent.page.forms[0]["title"] = self.name
-    agent.page.forms[0]["Time"] = self.time
+    agent.page.forms[0]["time"] = self.time
     agent.page.forms[0]["date"] = self.date
     agent.page.forms[0]["address"] = self.address
-    agent.page.forms[0]["location"] = self.address
-    agent.page.forms[0]["summary"] = self.summary
-    agent.page.forms[0]["details"] = self.details
     agent.page.forms[0]["description"] = self.details
-    agent.page.forms[0]["organizer"] = self.organizer
 
-    #form fields for demonstration on localhost:3000
+    #form fields for filling out on localhost:3000
     agent.page.forms[0]["event[name]"] = self.name
     agent.page.forms[0]["event[time]"] = self.time
     agent.page.forms[0]["event[date]"] = self.date
@@ -60,6 +57,7 @@ class Event < ApplicationRecord
     agent.page.forms[0]["event[summary]"] = "SYNDICATED"
     agent.page.forms[0]["event[details]"] = self.details
     agent.page.forms[0]["event[organizer]"] = self.organizer
+    
     page.forms[0].submit
   end
 
