@@ -8,10 +8,20 @@ class EventAdder {
 
   submitMessage(e){
     e.preventDefault();
-    alert("nothing but the alert");
+    $.ajax({
+      method: "post",
+      url: "/api/events",
+      dataType: "json",
+      data: this.$form.serialize(),
+      success: function(){
+        alert("hooray it worked");
+      },
+      error: function(){
+        alert("Error. Not able to save event.");
+      }
+    });
   }
 
 }
-
 
 module.exports = EventAdder;
