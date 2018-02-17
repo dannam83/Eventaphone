@@ -1,0 +1,40 @@
+{
+  "name": "Eventaphone",
+  "version": "1.0.0",
+  "description": "## Introduction Eventaphone is built entirely on the Ruby On Rails platform. It is designed to take event information and then automatically do periodic checks to see if there are any newly submitted events to send out to other websites. If there are, it will automatically go to those other websites, fill out their form, and submit it. Eventaphone demonstrates the ability of Ruby On Rails to generate HTML, create forms, interact with websites on its own, and also interact with the user all from the backend.",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "webpack": "^3.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannam83/Eventaphone.git"
+  },
+  "engines": {
+  "node": "6.10.1",
+  "npm": "3.10.10"
+  },
+  "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "webpack": "webpack --watch",
+  "postinstall": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannam83/Eventaphone/issues"
+  },
+  "homepage": "https://github.com/dannam83/Eventaphone#readme"
+}
