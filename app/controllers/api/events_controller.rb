@@ -12,8 +12,6 @@ class Api::EventsController < ApplicationController
     @event = Event.new(event_params)
     if @event.save
       render json: @event
-    else
-      flash.now[:alert] = 'Please fill out entire form.'
     end
   end
 
